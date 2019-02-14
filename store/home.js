@@ -11,13 +11,12 @@ export const actions = {
     }
 }
 export const mutations = {
-    [HOME.SET_ARTICLE_LIST]({state},res){
-        // console.log(res)
-        state.stateArticleList = res.data
+    [HOME.SET_ARTICLE_LIST]({stateArticleList},res){
+        stateArticleList = res.data
     }
 }
 export const getters = {
-    getArticleList(){
-        
+    getArticleList({stateArticleList}){
+        return stateArticleList
     }
 }
