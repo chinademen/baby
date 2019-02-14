@@ -22,8 +22,7 @@ module.exports = {
     'assets/css/common.css'
   ],
   plugins: [
-    '@/plugins/element-ui',
-    '@/plugins/axios.js'
+    '@/plugins/element-ui'
   ],
 
   build: {

@@ -12,7 +12,7 @@ axios.interceptors.request.use((config) => {
   if (config.method === 'post') {
     config.data = qs.stringify(config.data)
   }
-  let URL = config.url.split(config.baseURL)
+  let URL = config.url.split(config.baseURL);
   return config
 }, (error) => {
   console.error('错误的传参', 'fail')
@@ -25,16 +25,10 @@ axios.interceptors.response.use((res) => {
   // if (res.data.success) {
   //   return Promise.reject(res)
   // }
-  return res.data 
+  return res 
 }, (error) => {
   // 请求失败
   return Promise.reject(error)
 })
 
-export const get = (url,params,showLoading) => axios.get(url,params,{
-  showLoading: showLoading
-})
-
-export const post = (url, params, showLoading) => axios.post(url, params, {
-  showLoading: showLoading
-})
+export default axios

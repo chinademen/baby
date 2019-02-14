@@ -12,10 +12,15 @@ export default {
     bannerCarousel
   },
   created(){
-    this.setArticleList()
+    this.setArticleList({
+      'pageNo': 1,
+      'pageSize': 10
+    })
   },
   methods:{
-    ...mapActions(['setArticleList'])
+    ...mapActions({
+      setArticleList:'home/setArticleList'
+    })
   }
 };
 </script>

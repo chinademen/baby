@@ -1,8 +1,8 @@
 let baseUrl
 if (process.env.NODE_ENV === 'development') {
-  baseUrl = 'https://api.github.com/'
+  baseUrl = 'http://39.98.181.80:8080'
 } else {
-  baseUrl = 'https://api.github.com/'
+  baseUrl = 'http://39.98.181.80:8080'
 }
 export {
   baseUrl

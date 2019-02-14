@@ -1,26 +1,23 @@
-import { articleList } from '~api/common'
-
-const type = {
-    SET_ARTICLE_LIST:'SET_ARTICLE_LIST'   // 文章列表
-}
+import { HOME } from './type'
+import { articleList } from '../api/common'
 
 export const state = () => ({
     stateArticleList:[]
 })
-
-export const actions = () => ({
-   async setArticleList(context,params){
+export const actions = {
+    async setArticleList({commit},params){
         const res = await articleList(params);
-        context.commit(type.SET_ARTICLE_LIST,res)
-   }
-})
-
-export const mutations = () => ({
-   [type.SET_ARTICLE_LIST](state,res){
-        console.log(res)
-   }
-})
-
-export const getters  = () => ({
-   
-})
+        commit(HOME.SET_ARTICLE_LIST,res)
+    }
+}
+export const mutations = {
+    [HOME.SET_ARTICLE_LIST]({state},res){
+        // console.log(res)
+        state.stateArticleList = res.data
+    }
+}
+export const getters = {
+    getArticleList(){
+        
+    }
+}
