@@ -5,6 +5,9 @@
 a{
     text-decoration: none;
 }
+ul>li{
+    list-style: none;
+}
 .page-enter-active, .page-leave-active {
     transition: opacity .5s;
   }

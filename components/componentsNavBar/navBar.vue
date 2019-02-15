@@ -45,19 +45,25 @@ export default {
 @import url("~assets/less/globalTheme.less");
 .baby_navBar {
   background-color:#theme_color[color1];
+  height: 80px;
   .baby_menu {
     width: 1200px;
-    height: 60px;
+    height: 80px;
     margin: 0 auto;
     li{
       margin-left: 20px;
     }
     .baby_menu_r{
       float: right;
+      height: 80px;
+      li{
+        height: 80px;
+        line-height: 80px;
+      }
     }
     .baby_menu_l{
       height: 40px;
-      margin-top: 10px;
+      margin-top: 20px;
     }
   }
 }
