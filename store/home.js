@@ -2,7 +2,7 @@ import { HOME } from './type'
 import { articleList } from '../api/common'
 
 export const state = () => ({
-    stateArticleList:[]
+    stateArticleList:null
 })
 export const actions = {
     async setArticleList({commit},params){
@@ -11,8 +11,8 @@ export const actions = {
     }
 }
 export const mutations = {
-    [HOME.SET_ARTICLE_LIST]({stateArticleList},res){
-        stateArticleList = res.data
+    [HOME.SET_ARTICLE_LIST](state,res){
+        state.stateArticleList = res.data;
     }
 }
 export const getters = {

@@ -1,7 +1,7 @@
 import $Axios from '~/clientHttp/config.js'
 
-export function articleList (params){
-    return $Axios('/api/webarticlelist',{
+export function useradd (params){
+    return $Axios('/api/webuseradd',{
         method:'POST',
         data:params
     })

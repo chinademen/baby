@@ -15,23 +15,23 @@
                 <ul>
                     <li>
                         <span> 您的称呼 <i>*</i> </span>
-                        <el-input v-model="input" placeholder="请输您的称呼"></el-input>
+                        <el-input v-model="webuseradd.username" placeholder="请输您的称呼"></el-input>
                     </li>
                     <li>
                         <span> 电话号码 <i>*</i> </span>
-                        <el-input v-model="input" placeholder="请输电话号码"></el-input>
+                        <el-input v-model="webuseradd.telphone" placeholder="请输电话号码"></el-input>
                     </li>
                     <li>
                         <span> 微信 </span>
-                        <el-input v-model="input" placeholder="请输入微信"></el-input>
+                        <el-input v-model="webuseradd.qq" placeholder="请输入微信"></el-input>
                     </li>
                     <li>
                         <span> QQ </span>
-                        <el-input v-model="input" placeholder="请输入QQ"></el-input>
+                        <el-input v-model="webuseradd.wechat" placeholder="请输入QQ"></el-input>
                     </li>
                     <li>
                         <span> 详细地址 </span>
-                        <el-input v-model="input" placeholder="请输入详细地址"></el-input>
+                        <el-input v-model="webuseradd.address" placeholder="请输入详细地址"></el-input>
                     </li>
                     <li class="button">
                         <span> 带*的为必须填写内容,其他的可以不需要填写^_^ </span>
@@ -52,16 +52,39 @@
 </template>
 
 <script>
+import { mapActions,mapGetters } from "vuex"
 export default{
     data() {
       return {
         active: 0,
-        input:''
+        webuseradd:{
+            username:'',
+            telphone:'',
+            qq:'',
+            wechat:'',
+            address:''
+        }
       };
     },
+    computed:{
+        ...mapGetters({
+            getIsUserAdd:'appointment/getIsUserAdd'
+        })
+    },
     methods:{
-        next(){
-            this.active++;
+        ...mapActions({
+            setUserAdd:'appointment/setUserAdd'
+        }),
+        async next(){
+            await this.setUserAdd(this.webuseradd)
+            if(this.getIsUserAdd == true){
+                this.active++;
+            }
+        }
+    },
+    destroyed() {
+        if(this.active == 0 ){
+            this.setUserAdd(this.webuseradd)
         }
     }
 
@@ -75,13 +98,13 @@ export default{
     .appointment_main{
         width: 1200px;
         margin: 0 auto;
-        overflow: hidden;
+        padding: 50px 0;
         .appointment_meun{
-            margin-top: 50px;
             background-color:#theme_fu_color[fu_color6];
             padding: 20px 85px;
             box-shadow: 0 1px 3px rgba(0,0,0,.08);
             border-radius: 10px;
+            margin-bottom: 20px;
         }
         .appointment_form{
             .appointment_meun();
