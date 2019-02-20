@@ -83,7 +83,7 @@ export default{
         }
     },
     destroyed() {
-        if(this.active == 0 ){
+        if(this.active == 0 && this.webuseradd.telphone ){
             this.setUserAdd(this.webuseradd)
         }
     }
