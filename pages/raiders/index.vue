@@ -3,9 +3,9 @@
     <section class="home_main">
       <div class="home_content">
         <common-list 
-          v-if="getCaselist"
-          :dataList="getCaselist"
-          titleMsg="成功案例"
+          v-if="getRaiderslist"
+          :dataList="getRaiderslist"
+          titleMsg="验血攻略"
           v-on:asideListChangePage="babyListChangePage"
         />
         <aside-list
@@ -31,7 +31,7 @@ export default {
       pageSize: 10
     };
     dispatch("common/setArticleList", params);
-    dispatch("common/setCaselist", params);
+    dispatch("common/setRaiderslist", params);
   },
   components: {
     commonList,
@@ -40,16 +40,16 @@ export default {
   computed: {
     ...mapGetters({
       getArticleList: "common/getArticleList",
-      getCaselist:"common/getCaselist"
+      getRaiderslist:"common/getRaiderslist"
     })
   },
   methods: {
     ...mapActions({
       setArticleList: "common/setArticleList",
-      setCaselist:"common/setCaselist",
+      setRaiderslist:"common/setRaiderslist",
     }),
     babyListChangePage(e) {
-      this.setCaselist({
+      this.setRaiderslist({
         pageNo: e,
         pageSize: 10
       });

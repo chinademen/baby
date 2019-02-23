@@ -1,55 +1,45 @@
 <template>
-  <div class="home_news" v-if="getArticleList">
-    <ele-title titleMsg="行业资讯"/>
+  <div class="asidelist">
+    <ele-title :titleMsg="titleMsg"/>
     <ul>
-      <li @click="pageGo(item)" v-for="item in getArticleList.data.list" :key="item.id">
+      <li @click="pageGo(item)" v-for="item in dataList.data.list" :key="item.id">
         <div>◆ {{item.title}}</div>
-        <div>[{{item.views}}阅读] [{{item.points}}点击]</div>
       </li>
     </ul>
     <div class="page">
       <el-pagination
         small
+        background
         layout="prev, pager, next"
-        :pageSize="pageSize"
+        :pageSize="10"
         @current-change="handlecurrenteChange"
-        :total="getArticleList.data.totalRecord"
+        :total="dataList.data.totalRecord"
       ></el-pagination>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import eleTitle from "~/components/componentsTitle/eleTitle";
 export default {
-  data() {
-    return {
-      pageSize: 10
-    };
-  },
   components: {
     eleTitle
   },
-  computed: {
-    ...mapGetters({
-      getArticleList: "home/getArticleList"
-    })
+  props:{
+    dataList:Object,
+    titleMsg:String,
   },
   methods: {
     ...mapActions({
       saveArticleId: "article/saveArticleId",
-      setArticleList:'home/setArticleList'
     }),
     pageGo(props) {
       this.saveArticleId(props);
-      this.$router.push({ path: "/article", query: { id: props.id } });
+      this.$router.push({ path: `/article/${props.id}`});
     },
     handlecurrenteChange(val) {
-      this.setArticleList({
-        pageNo: val,
-        pageSize: 10
-      });
+      this.$emit('asideListChangePage', val)
     }
   }
 };
@@ -57,7 +47,7 @@ export default {
 
 <style lang="less" scoped>
 @import url("~assets/less/globalTheme.less");
-.home_news {
+.asidelist {
   width: 280px;
   float: right;
   background-color: #theme_fu_color[fu_color6];

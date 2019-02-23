@@ -3,8 +3,8 @@
     <section class="home_main">
       <div class="home_content">
         <common-list 
-          v-if="getCaselist"
-          :dataList="getCaselist"
+          v-if="getDnalist"
+          :dataList="getDnalist"
           titleMsg="成功案例"
           v-on:asideListChangePage="babyListChangePage"
         />
@@ -31,7 +31,7 @@ export default {
       pageSize: 10
     };
     dispatch("common/setArticleList", params);
-    dispatch("common/setCaselist", params);
+    dispatch("common/setDnalist", params);
   },
   components: {
     commonList,
@@ -40,16 +40,16 @@ export default {
   computed: {
     ...mapGetters({
       getArticleList: "common/getArticleList",
-      getCaselist:"common/getCaselist"
+      getDnalist:"common/getDnalist"
     })
   },
   methods: {
     ...mapActions({
       setArticleList: "common/setArticleList",
-      setCaselist:"common/setCaselist",
+      setDnalist:"common/setCaselist",
     }),
     babyListChangePage(e) {
-      this.setCaselist({
+      this.setDnalist({
         pageNo: e,
         pageSize: 10
       });

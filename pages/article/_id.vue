@@ -16,9 +16,6 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  created() {
-    console.log(this.getArticleId);
-  },
   computed: {
     ...mapGetters({
       getArticleId: "article/getArticleId"

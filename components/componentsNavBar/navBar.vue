@@ -19,22 +19,16 @@
 </template>
 
 <script>
-        // {name:'验血攻略',path:'strategy'},
-        // {name:'验血医院',path:'hospital'},
-        // {name:'成功案例',path:'case'},
-        // {name:'行业资讯',path:'information'},
-        // {name:'机构简介',path:'introduction'},
 export default {
   data() {
     return {
       activeIndex: "home",
       navList:[
         {name:'网站首页',path:'home'},
-        {name:'验血攻略',path:'strategy'},
-        // {name:'验血医院',path:'hospital'},
-        // {name:'成功案例',path:'case'},
-        {name:'行业资讯',path:'information'},
-        {name:'DNA检测',path:'introduction'},
+        {name:'验血攻略',path:'raiders'},
+        {name:'成功案例',path:'case'},
+        {name:'行业资讯',path:'information'}, // article
+        {name:'DNA检测',path:'dna'},
         {name:'立即预约',path:'appointment'},
       ]
     };
