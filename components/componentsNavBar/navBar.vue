@@ -1,7 +1,7 @@
 <template>
     <div class="baby_navBar">
       <div class="baby_menu">
-        <img class="baby_menu_l" src="../../assets/image/logo.png" alt="">
+        <img @click="handleSelect('home')" class="baby_menu_l" src="../../assets/image/logo.png" alt="">
         <el-menu
             :default-active="activeIndex"
             class="baby_menu_r"
@@ -49,6 +49,9 @@ export default {
     width: 1200px;
     height: 80px;
     margin: 0 auto;
+    img{
+      cursor: pointer;
+    }
     li{
       margin-left: 20px;
     }

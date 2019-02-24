@@ -11,6 +11,7 @@
       <p class="aside_p">预约QQ</p>
       <P class="aside_p">2677865380</P>
       <div slot="reference" class="aside_box">
+        <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2677865380&site=qq&menu=yes"></a>
         <img src="../../assets/image/qq.png" alt>
       </div>
     </el-popover>
@@ -45,6 +46,13 @@ export default {};
     background-color: #theme_fu_color[fu_color6];
     cursor: pointer;
     text-align: center;
+    position: relative;
+    a{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+    }
     &:hover {
       background-color: #theme_border_color[border_color1];
     }
